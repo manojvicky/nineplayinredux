@@ -1,0 +1,50 @@
+.starclass {
+    float: left;
+}
+
+li.starliclass {
+    list-style-type: none;
+    float: left;
+    font-weight: bolder;
+    font-size: 30px;
+    margin: 5px;
+    color: red;
+}
+
+ul.starulclass {
+    width: 400px;
+}
+
+.keypadclass {
+    clear: both;
+    margin: auto;
+    width: 50%;
+    margin-top: 100px;
+}
+
+.keypadbuttonclass {
+    background: transparent;
+    border: 2px solid black;
+    margin: 10px;
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.controlclass {
+    width: 33%;
+    float: left;
+}
+
+.displayclass {
+    width: 33%;
+    float: left;
+    padding-top: 25px;
+}
+
+.firstrow {
+    height: 50px;
+    padding-top: 20px;
+}
