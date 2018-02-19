@@ -1,5 +1,6 @@
 const  constants={
-    KEYPADCLICKED:"KEYPADCLICKED"
+    KEYPADCLICKED:"KEYPADCLICKED",
+    DISPLAYCLICKED:"DISPLAYCLICKED"
 }
 
 export default constants;

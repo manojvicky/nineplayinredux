@@ -6,3 +6,10 @@ export function keypadclicked(data){
     data
   }
 }
+
+export function displayclicked(data){
+    return {
+      type: 'DISPLAYCLICKED',
+      data
+    }
+  }

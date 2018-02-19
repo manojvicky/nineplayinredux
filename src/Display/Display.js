@@ -3,11 +3,16 @@ import React from 'react';
 class Display extends React.Component {
     constructor(){
         super();
+        this.handleClicked = this.handleClicked.bind(this);
     }
     componentWillReceiveProps(nextprops){
         console.log("display componentWillReceiveProps()", nextprops);
     }
     
+    handleClicked(event){
+        const value= event.target.value;
+        this.props.actions.displayclicked(value);
+    }
    render() {
        console.log("display", this.props.Keypadclicked);
        const {Keypadclicked} = this.props;

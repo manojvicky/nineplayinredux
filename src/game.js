@@ -1,6 +1,6 @@
 import React from 'react';
 import Star from './Star/Star.container';
-import Controls from './Controls/Controls';
+import Controls from './Controls/Controls.container';
 import Display from './Display/Display.container';
 import Keypad from './Keypad/Keypad.container';
 

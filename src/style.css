@@ -18,7 +18,7 @@ ul.starulclass {
 .keypadclass {
     clear: both;
     margin: auto;
-    width: 50%;
+    width: 40%;
     margin-top: 100px;
 }
 
@@ -33,9 +33,19 @@ ul.starulclass {
     cursor: pointer;
 }
 
+button.lifeclass {
+    margin: 0px 0px 0px 86px;
+}
+
+button.enterclass {
+    display: block;
+    margin: 0px 0px 10px 80px;
+}
+
 .controlclass {
     width: 33%;
     float: left;
+    padding-top: 37px;
 }
 
 .displayclass {
@@ -47,4 +57,34 @@ ul.starulclass {
 .firstrow {
     height: 50px;
     padding-top: 20px;
+}
+
+input[type="button"]:disabled{
+    color: white;
+    border: 2px solid white;
+    background: gray;
+}
+
+.enterclass {
+    display: block;
+    margin: 0px 0px 10px 135px;
+    width: 59px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.lifeclass {
+    display: block;
+    margin: 0px 0px 10px 135px;
+    width: 59px;
+    height: 30px;
+    background: transparent;
+    border: 2px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
 }

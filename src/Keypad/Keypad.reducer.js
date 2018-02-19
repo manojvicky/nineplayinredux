@@ -15,6 +15,13 @@ export default function reducer(state=initalstate, action){
         Keypadclicked: [...state.Keypadclicked, action.data]
     }
 
+    case 'DISPLAYCLICKED':
+    console.log("state.keypadclicked", state.keypadclicked);
+      return { 
+        ...state,
+        Keypadclicked: [...state.Keypadclicked.filter(item=>item!==action.data)]
+    }
+
     default:
       return state
   }
