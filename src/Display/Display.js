@@ -11,12 +11,14 @@ class Display extends React.Component {
     
     handleClicked(event){
         const value= event.target.value;
-        this.props.actions.displayclicked(value);
+        this.props.actionskeypad.displayclicked(value);
+        this.props.actionsdisplay.getdispaly(value);
     }
    render() {
-       console.log("display", this.props.Keypadclicked);
-       const {Keypadclicked} = this.props;
-       let values = Keypadclicked.length>0 ? Keypadclicked.map((value, index)=>{
+       console.log("display", this.props.displayclicked);
+       const {displayclicked} = this.props;
+       console.log("displayclicked", displayclicked);
+       let values = displayclicked.length>0 ? displayclicked.map((value, index)=>{
         return(
             <input type="button" className="keypadbuttonclass" key={index} onClick={(e)=>this.handleClicked(e)} value={value} />
              );

@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 
 class Controls extends React.Component {
     constructor(props){
@@ -24,9 +23,12 @@ class Controls extends React.Component {
                 correct: true
             })
         }else{
-            let sum=_.sum(Keypadclicked);
+            let sum=0;
+            Keypadclicked.map((value)=>{
+                sum=sum+parseInt(value);
+            })
             console.log("sum", sum);
-            if(sum==randomstar){
+            if(sum===randomstar){
                 console.log("its true");
                 this.setState({
                     correct: true

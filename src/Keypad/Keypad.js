@@ -18,11 +18,14 @@ this.setState({
 
 handleClicked(event){
     const value = event.target.value;
-    this.props.actions.keypadclicked(value);
+    this.props.actionskeypad.keypadclicked(value);
+    this.props.actionsdisplay.setdisplay(value);
+    
     }
 
    render() {
        let keypadvalues = [1,2,3,4,5,6,7,8,9];
+       console.log("this.props.actionsdisplay", this.props.actionsdisplay);
        const keypad = keypadvalues.map((value, index)=>{
         return(
        <input type="button" className="keypadbuttonclass" key={value} onClick={(e)=>this.handleClicked(e)} 

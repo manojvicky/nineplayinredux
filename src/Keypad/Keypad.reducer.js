@@ -2,7 +2,7 @@ import constants from "./Keypad.constant";
 import * as KeypadActions from "./Keypad.action";
 
 const initalstate = {
-    Keypadclicked:[]
+    Keypadclicked:[],
 };
 
 export default function reducer(state=initalstate, action){
@@ -16,7 +16,7 @@ export default function reducer(state=initalstate, action){
     }
 
     case 'DISPLAYCLICKED':
-    console.log("state.keypadclicked", state.keypadclicked);
+    console.log("state.displayclicked", state.keypadclicked);
       return { 
         ...state,
         Keypadclicked: [...state.Keypadclicked.filter(item=>item!==action.data)]
