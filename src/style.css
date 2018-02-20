@@ -1,5 +1,6 @@
 .starclass {
     float: left;
+    width: 33%;
 }
 
 li.starliclass {
@@ -11,9 +12,9 @@ li.starliclass {
     color: red;
 }
 
-ul.starulclass {
+/* ul.starulclass {
     width: 400px;
-}
+} */
 
 .keypadclass {
     clear: both;
@@ -45,7 +46,6 @@ button.enterclass {
 .controlclass {
     width: 33%;
     float: left;
-    padding-top: 37px;
 }
 
 .displayclass {
@@ -68,23 +68,25 @@ input[type="button"]:disabled{
 .enterclass {
     display: block;
     margin: 0px 0px 10px 135px;
-    width: 59px;
-    height: 30px;
+    width: 75px;
+    height: 50px;
     background: transparent;
     border: 2px solid black;
-    border-radius: 8px;
+    border-radius: 35px;
+    line-height: 1;
     cursor: pointer;
     font-weight: 700;
+    font-size: 27px;
 }
 
 .lifeclass {
     display: block;
     margin: 0px 0px 10px 135px;
-    width: 59px;
-    height: 30px;
+    width: 75px;
+    height: 40px;
     background: transparent;
     border: 2px solid black;
-    border-radius: 8px;
+    border-radius: 36px;
     cursor: pointer;
-    font-weight: 700;
+    font-size: 20px;
 }

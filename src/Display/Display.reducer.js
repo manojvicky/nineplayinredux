@@ -22,6 +22,10 @@ export default function reducer(state=initalstate, action){
         displayclicked: [...state.displayclicked.filter(item=>item!==action.data)]
     }
 
+    case 'CLEARDISPLAY':
+    return initalstate
+
+    
     default:
       return state
   }

@@ -1,8 +1,7 @@
 import constants from "./game.constant";
 
-export function randomstar(data){
+export function randomstar(){
   return {
     type: 'RANDOMSTAR',
-    data
   }
 }

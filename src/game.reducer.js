@@ -8,7 +8,7 @@ const initalstate = {
 export default function reducer(state=initalstate, action){
   switch (action.type) {
     case 'RANDOMSTAR':
-      return (Object.assign({}, state, {randomstar: action.data}))
+      return (Object.assign({}, state, {randomstar: parseInt(Math.floor(9*Math.random())+1)}))
        
     default:
       return state

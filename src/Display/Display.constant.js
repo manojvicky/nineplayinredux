@@ -1,6 +1,7 @@
 const  constants={
     SETDISPLAY:"SETDISPLAY",
-    GETDISPLAY:"GETDISPLAY"
+    GETDISPLAY:"GETDISPLAY",
+    CLEARDISPLAY:"CLEARDISPLAY"
 }
 
 export default constants;

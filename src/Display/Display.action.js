@@ -13,3 +13,9 @@ import constants from "./Display.constant";
       data
     }
   }
+
+  export function cleardisplay(){
+    return {
+      type: 'CLEARDISPLAY',
+    }
+  }
