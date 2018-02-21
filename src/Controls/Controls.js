@@ -7,13 +7,14 @@ class Controls extends React.Component {
         this.state = {
             correct:false,
             life: 5,
-            equalto: true,
-            wrong: false,
-            right: false,
-            modalmessage: false
+            render: 1,
+            modalmessage: "",
+            modalstate: false,
+            score: 0
         }
         this.enterfxn = this.enterfxn.bind(this);
         this.lifefxn = this.lifefxn.bind(this);
+        this.handleClose = this.handleClose.bind(this);
     }
 
     lifefxn(){
@@ -22,26 +23,36 @@ class Controls extends React.Component {
         if(life===0){
             console.log("u lose");
             this.setState({
-                modalmessage: true,
+                modalstate: true,
                 life: life,
-                correct:false,
-                equalto: true,
-                wrong: false,
-                right: false
+                score: 0,
+                modalmessage: "You LOSE :-(",
             });
+            
         }else{
             this.props.actionsdisplay.cleardisplay();
             this.props.actions.randomstar();
             this.setState({
                 life: life,
                 correct:false,
-                equalto: true,
-                wrong: false,
-                right: false
+                render: 1
             });
         }
     }
-
+    handleClose(){
+        console.log("handleClose")
+        this.setState({
+            modalstate: false,
+            life: 5,
+            score: 0,
+            render: 1,
+            modalmessage: "You LOSE :-(",
+            correct:false
+        });
+        this.props.actionsdisplay.cleardisplay();
+        this.props.actions.randomstar();
+        this.props.actionskeypad.clearkeypad();
+    }
     enterfxn(){
         const {randomstar, displayclicked} = this.props;
         const {correct} = this.state;
@@ -51,9 +62,7 @@ class Controls extends React.Component {
             this.props.actions.randomstar();
             this.setState({
                 correct: false,
-                equalto: true,
-                wrong: false,
-                right: false
+                render: 1
             })
         }else{
             let sum=0;
@@ -63,25 +72,86 @@ class Controls extends React.Component {
             console.log("sum", sum);
             if(sum===randomstar){
                 if(this.state.life>0 && this.props.Keypadclicked.length === 9){
-                    this.setState({
-                        modalmessage: true
-                    });
-                    return;
+                    // if(this.state.life ===5){
+                    //     this.setState({
+                    //         modalstate: true
+                    //     });
+                    //     return;
+                    // }
+                    switch(this.state.life){
+
+                        case 5:
+                        if(this.props.maxscore<500){
+                            this.props.actions.maximumscore(500);
+                        } 
+                        this.setState({
+                            modalstate: true,
+                            score:500,
+                            modalmessage: "You WON ;-)"
+
+                        });
+                        return;
+
+                        case 4: 
+                        if(this.props.maxscore<400){
+                            this.props.actions.maximumscore(400);
+                        } 
+                        this.setState({
+                            modalstate: true,
+                            score:400,
+                            modalmessage: "You WON ;-)"
+
+                        });
+                        return;
+
+                        case 3: 
+                        if(this.props.maxscore<300){
+                            this.props.actions.maximumscore(300);
+                        } 
+                        this.setState({
+                            modalstate: true,
+                            score:300,
+                            modalmessage: "You WON ;-)"
+
+                        });
+                        return;
+
+                        case 2: 
+                        if(this.props.maxscore<200){
+                            this.props.actions.maximumscore(200);
+                        } 
+                        this.setState({
+                            modalstate: true,
+                            score:200,
+                            modalmessage: "You WON ;-)"
+
+                        });
+                        return;
+
+                        case 1: 
+                        if(this.props.maxscore<100){
+                            this.props.actions.maximumscore(100);
+                        } 
+                        this.setState({
+                            modalstate: true,
+                            score:100,
+                            modalmessage: "You WON ;-)"
+
+                        });
+                        return;
+                    }
+                    
                 }
                 console.log("its true");
                 this.setState({
                     correct: true,
-                    equalto: false,
-                    wrong: false,
-                    right: true
+                    render: 3,
                 })
             }else{
                 console.log("its false");
                 this.setState({
-                    equalto: false,
-                    wrong: true,
                     correct: false,
-                    right: false
+                    render: 2
                 })
             }
         }
@@ -90,18 +160,23 @@ class Controls extends React.Component {
    render() {
        console.log("random", this.props.randomstar);
        console.log("display in control", this.props.displayclicked);
-       let equalto = this.state.equalto ? <input className="enterclass" type="button" onClick={this.enterfxn} value="&#x1F64F;" />: null;
-       let wrong = this.state.wrong ? <input className="enterclass" type="button" onClick={this.enterfxn} value="&#x1F62D;" />: null;
-       let right = this.state.right ? <input className="enterclass" type="button" onClick={this.enterfxn} value="&#x270C;" />: null;
-       let modalmessage = this.state.modalmessage ? <Modal show={this.state.modalmessage} onHide={this.handleClose}>
+       let maxscore = this.props.maxscore;
+       let equalto = this.state.render === 1 ? <input className="enterclass" type="button" onClick={this.enterfxn} value="=" />: null;
+       let wrong = this.state.render === 2 ? <input className="enterclass" type="button" style={{background: "red"}} onClick={this.enterfxn} value="X" />: null;
+       let right = this.state.render === 3 ? <input className="enterclass" type="button" style={{background: "lightgreen"}} onClick={this.enterfxn} value="&#x2714;" />: null;
+       let modalstate = this.state.modalstate ? <Modal show={this.state.modalstate} onHide={this.handleClose}>
        <Modal.Header closeButton>
-           <Modal.Title>Modal heading</Modal.Title>
+           <Modal.Title>
+            Nine Play
+            <span className="score">Maximum Score {maxscore}</span>
+            <span className="score">Score {this.state.score}</span>
+           </Modal.Title>
        </Modal.Header>
        <Modal.Body>
-           <h4>Text in a modal</h4>
+           <h4 className="modalmessage">{this.state.modalmessage}</h4>
        </Modal.Body>
        <Modal.Footer>
-           <Button onClick={this.handleClose}>Close</Button>
+       &#9400; Manoj
        </Modal.Footer>
    </Modal> : null;
       return (
@@ -109,8 +184,8 @@ class Controls extends React.Component {
             {equalto}
             {wrong}
             {right}
-            <input className="lifeclass" type="button" onClick={this.lifefxn} disabled={this.state.life===0} value={this.state.life} />
-            {modalmessage}
+            <input className="lifeclass" type="button" onClick={this.lifefxn} disabled={this.state.life===0} value={`Life: ${this.state.life}`} />
+            {modalstate}
             </div>
       );
    }

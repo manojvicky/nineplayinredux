@@ -13,3 +13,9 @@ export function displayclicked(data){
       data
     }
   }
+  
+export function clearkeypad(){
+    return {
+      type: 'KEYPADINITAL',
+    }
+  }

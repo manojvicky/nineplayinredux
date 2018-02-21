@@ -22,6 +22,9 @@ export default function reducer(state=initalstate, action){
         Keypadclicked: [...state.Keypadclicked.filter(item=>item!==action.data)]
     }
 
+    case 'KEYPADINITAL':
+      return initalstate
+
     default:
       return state
   }

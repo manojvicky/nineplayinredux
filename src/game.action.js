@@ -5,3 +5,10 @@ export function randomstar(){
     type: 'RANDOMSTAR',
   }
 }
+
+export function maximumscore(data){
+  return {
+    type: 'MAXSCORE',
+    data
+  }
+}
