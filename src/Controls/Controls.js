@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import ModalMessage from './ModalMessage';
 
 class Controls extends React.Component {
     constructor(props){
@@ -19,6 +20,7 @@ class Controls extends React.Component {
 
     lifefxn(){
         let {life} = this.state;
+        const {displayclicked} = this.props;
         life=life-1;
         if(life===0){
             console.log("u lose");
@@ -30,6 +32,11 @@ class Controls extends React.Component {
             });
             
         }else{
+            if(displayclicked.length>0){
+            displayclicked.map((item)=>{
+            this.props.actionskeypad.displayclicked(item);
+            })
+            }
             this.props.actionsdisplay.cleardisplay();
             this.props.actions.randomstar();
             this.setState({
@@ -164,28 +171,15 @@ class Controls extends React.Component {
        let equalto = this.state.render === 1 ? <input className="enterclass" type="button" onClick={this.enterfxn} value="=" />: null;
        let wrong = this.state.render === 2 ? <input className="enterclass" type="button" style={{background: "red"}} onClick={this.enterfxn} value="X" />: null;
        let right = this.state.render === 3 ? <input className="enterclass" type="button" style={{background: "lightgreen"}} onClick={this.enterfxn} value="&#x2714;" />: null;
-       let modalstate = this.state.modalstate ? <Modal show={this.state.modalstate} onHide={this.handleClose}>
-       <Modal.Header closeButton>
-           <Modal.Title>
-            Nine Play
-            <span className="score">Maximum Score {maxscore}</span>
-            <span className="score">Score {this.state.score}</span>
-           </Modal.Title>
-       </Modal.Header>
-       <Modal.Body>
-           <h4 className="modalmessage">{this.state.modalmessage}</h4>
-       </Modal.Body>
-       <Modal.Footer>
-       &#9400; Manoj
-       </Modal.Footer>
-   </Modal> : null;
       return (
             <div className="controlclass">
             {equalto}
             {wrong}
             {right}
             <input className="lifeclass" type="button" onClick={this.lifefxn} disabled={this.state.life===0} value={`Life: ${this.state.life}`} />
-            {modalstate}
+            <ModalMessage modalstate={this.state.modalstate}
+            handleClose={this.handleClose} maxscore={this.props.maxscore} score={this.props.score}
+            modalmessage={this.props.modalmessage}/>
             </div>
       );
    }
