@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
 const ModalMessage = (props)=>{
+    console.log("props", props);
    return(
     <Modal show={props.modalstate} onHide={props.handleClose}>
     <Modal.Header closeButton>

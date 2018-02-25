@@ -11,6 +11,13 @@ export default connect(
         displayclicked: state.DisplayReducer.displayclicked,
         randomstar: state.gameReducer.randomstar,
         maxscore: state.gameReducer.maxscore,
+        life: state.gameReducer.life,
+        correct: state.gameReducer.correct,
+        buttonvalue: state.gameReducer.buttonvalue,
+        modalmessage: state.gameReducer.modalmessage,
+        modalstate: state.gameReducer.modalstate,
+        life: state.gameReducer.life,
+        score: state.gameReducer.score,
         Keypadclicked: state.KeypadReducer.Keypadclicked
     }),
     (dispatch)=>({

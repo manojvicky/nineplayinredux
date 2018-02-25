@@ -19,43 +19,31 @@ class Controls extends React.Component {
     }
 
     lifefxn(){
-        let {life} = this.state;
-        const {displayclicked} = this.props;
+        let {displayclicked, life, score, modalmessage, modalstate} = this.props;
         life=life-1;
         if(life===0){
             console.log("u lose");
-            this.setState({
-                modalstate: true,
-                life: life,
-                score: 0,
-                modalmessage: "You LOSE :-(",
-            });
-            
+            this.props.actions.modalmessage("U Lose :-(");
+            this.props.actions.modalstate(true);
+            this.props.actions.score(0);
         }else{
             if(displayclicked.length>0){
             displayclicked.map((item)=>{
             this.props.actionskeypad.displayclicked(item);
             })
             }
+            this.props.actions.life(life);
+            this.props.actions.correct(false);
             this.props.actionsdisplay.cleardisplay();
             this.props.actions.randomstar();
-            this.setState({
-                life: life,
-                correct:false,
-                render: 1
-            });
         }
     }
     handleClose(){
-        console.log("handleClose")
-        this.setState({
-            modalstate: false,
-            life: 5,
-            score: 0,
-            render: 1,
-            modalmessage: "You LOSE :-(",
-            correct:false
-        });
+        console.log("handleClose");
+        this.props.actions.modalmessage("");
+        this.props.actions.modalstate(false);
+        this.props.actions.score(0);
+        this.props.actions.life(5);
         this.props.actionsdisplay.cleardisplay();
         this.props.actions.randomstar();
         this.props.actionskeypad.clearkeypad();
@@ -67,10 +55,8 @@ class Controls extends React.Component {
             console.log("stage 2 ");
             this.props.actionsdisplay.cleardisplay();
             this.props.actions.randomstar();
-            this.setState({
-                correct: false,
-                render: 1
-            })
+            this.props.actions.correct(false);
+            this.props.actions.buttonvalue("equalto");
         }else{
             let sum=0;
             displayclicked.map((value)=>{
@@ -173,11 +159,12 @@ class Controls extends React.Component {
        let right = this.state.render === 3 ? <input className="enterclass" type="button" style={{background: "lightgreen"}} onClick={this.enterfxn} value="&#x2714;" />: null;
       return (
             <div className="controlclass">
-            {equalto}
+            {/* {equalto}
             {wrong}
-            {right}
-            <input className="lifeclass" type="button" onClick={this.lifefxn} disabled={this.state.life===0} value={`Life: ${this.state.life}`} />
-            <ModalMessage modalstate={this.state.modalstate}
+            {right} */}
+            <input className="enterclass" type="button" onClick={this.enterfxn} value={this.props.buttonvalue} style={{background: this.props.color}} />
+            <input className="lifeclass" type="button" onClick={this.lifefxn} disabled={this.state.life===0} value={`Life: ${this.props.life}`} />
+            <ModalMessage modalstate={this.props.modalstate}
             handleClose={this.handleClose} maxscore={this.props.maxscore} score={this.props.score}
             modalmessage={this.props.modalmessage}/>
             </div>
