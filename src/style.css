@@ -66,16 +66,16 @@ input[type="button"]:disabled{
 
 .enterclass {
     display: block;
-    margin: 0px 0px 10px 135px;
-    width: 60px;
+    margin: 0px 0px 10px 63px;
+    width: 200px;
     height: 45px;
     background: transparent;
     border: 2px solid black;
     border-radius: 7px;
     line-height: 1;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 27px;
+    /* font-weight: 700; */
+    font-size: 23px;
 }
 
 .lifeclass {

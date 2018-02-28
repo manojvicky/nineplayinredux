@@ -5,7 +5,7 @@ const initalstate = {
   randomstar:{},
   maxscore: 0,
   correct: false,
-  buttonvalue:"equalto",
+  buttonvalue:"white",
   modalmessage: "",
   modalstate: false,
   score:0,
